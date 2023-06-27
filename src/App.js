@@ -1,7 +1,6 @@
 import React from "react";
-import HomePage from "./pages/HomePage";
-import SearchPage from "./pages/SearchPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Auth, HomePage, SearchPage } from "./pages";
 
 const App = () => {
   return (
@@ -9,6 +8,7 @@ const App = () => {
      <BrowserRouter>
       <Routes>
        <Route path="/" element={<HomePage/>}/>
+       <Route path="/auth" element={<Auth/>}/>
        <Route path="/search/:term" element={<SearchPage/>}/>
       </Routes>
      </BrowserRouter>
