@@ -7,7 +7,7 @@ const HomePage = () => {
     const [data, setdata] = useState('');
     useEffect(() => {
         const getData= async()=>{
-         const currdata=await fetchData('tesla');
+         const currdata=await fetchData('latest');
          setdata(currdata);
         }
        getData();

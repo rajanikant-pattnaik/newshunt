@@ -14,6 +14,9 @@ const Navbar = () => {
     }
 
   };
+  const logOut=()=>{
+    localStorage.removeItem('userId');
+  }
   return (
     <div>
       <nav className=" mx-auto flex justify-between px-4 py-4 bg-indigo-900 text-slate-200">
@@ -41,7 +44,7 @@ const Navbar = () => {
           <li className="px-3 text-2xl font-semibold hover:underline hover:text-blue-300">
             Likes
           </li>
-          <li className="px-3 text-2xl font-semibold hover:underline hover:text-blue-300">
+          <li className="px-3 text-2xl font-semibold hover:underline hover:text-blue-300" onClick={logOut}>
             Account
           </li>
         </ul>

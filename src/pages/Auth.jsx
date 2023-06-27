@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { app } from "../utils/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 const Auth = () => {
   const [credentials, setCredentials] = useState({
     email: "",
@@ -12,6 +13,7 @@ const Auth = () => {
   });
   const [param, setparam] = useState("login");
   const authe = getAuth(app);
+  const navigate=useNavigate();
   const register = () => {
     const { email, password } = credentials;
     createUserWithEmailAndPassword(authe, email, password)
@@ -33,9 +35,8 @@ const Auth = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("success");
-        console.log(user);
         localStorage.setItem("userId", user.uid);
+        navigate('/');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -64,15 +65,15 @@ const Auth = () => {
     });
   };
   useEffect(() => {
-    const user = authe.currentUser;
-
-    if (user) {
-      console.log("user-");
-      console.log(user);
-    } else {
-      console.log("no user");
-    }
-  }, [authe.currentUser]);
+     const userid=localStorage.getItem('userId');
+     if(userid){
+      console.log("user exist");
+      navigate('/');
+     }
+     else{
+      console.log('user doesnot exist');
+     }
+  }, [navigate]);
   return (
     <div className="flex justify-center items-center h-screen bg-slate-950 text-white">
       <form className="h-80 w-80 bg-slate-500 p-8 space-y-2">
