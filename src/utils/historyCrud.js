@@ -1,11 +1,13 @@
 import { db } from "./firebaseConfig";
 import {
     collection,
-    getDocs,
     addDoc,
     updateDoc,
     deleteDoc,
     doc,
+    query,
+    where,
+    getDocs,
   } from "firebase/firestore";
   const historyCollection = collection(db, "HistoryNews");
   const addHistory = (history) => {
@@ -19,8 +21,12 @@ import {
     const currhistory = doc(db, "HistoryNews", id);
     return deleteDoc(currhistory);
   };
-  const getALLHistory = () => {
-    return getDocs(historyCollection);
+  const getALLHistory = async(id) => {
+    // console.log(id);
+    const q=query(collection(db,"HistoryNews"), where('id','==',id));
+    const qresult=await getDocs(q);
+    console.log(qresult);
+    return qresult;
   };
   
   export { addHistory, updateHistory, deleteHistory, getALLHistory };
