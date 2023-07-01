@@ -14,7 +14,7 @@ const HistoryPage = () => {
         try {
             const array=[];
             const res=await getALLHistory(uid);
-            console.log(res);
+            // console.log(res);
             res.forEach((doc)=>{
              array.push({...doc.data(),hid:doc.id});
             })
@@ -25,7 +25,7 @@ const HistoryPage = () => {
         }
         getHistory();
     }, [uid])
-    console.log(result);
+    // console.log(result);
   return (
     <>
       {

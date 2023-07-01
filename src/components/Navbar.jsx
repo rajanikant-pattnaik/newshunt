@@ -15,11 +15,11 @@ const Navbar = () => {
   };
   const logOut = () => {
     localStorage.removeItem("userId");
-    navigate('/');
+    navigate("/");
   };
   return (
     <div>
-      <nav className=" mx-auto flex justify-between px-4 py-4 bg-indigo-900 text-slate-200">
+      <nav className=" mx-auto flex justify-between px-4 py-6 bg-gray-900 text-slate-200">
         <div>
           <h3
             className="text-2xl"
@@ -37,8 +37,12 @@ const Navbar = () => {
             placeholder="search"
             value={term}
             onChange={(e) => setTerm(e.target.value)}
+            className="w-80 h-10 rounded-3xl bg-transparent border-blue-200 border-2 text-white px-5"
           />
-          <button className="text-white" onClick={handleSubmit}>
+          <button
+            className="text-white ml-4 hover:bg-slate-700 hover:border-2 hover:rounded-2xl w-20"
+            onClick={handleSubmit}
+          >
             search
           </button>
         </div>

@@ -25,7 +25,6 @@ import {
     // console.log(id);
     const q=query(collection(db,"HistoryNews"), where('id','==',id));
     const qresult=await getDocs(q);
-    console.log(qresult);
     return qresult;
   };
   
