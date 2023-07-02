@@ -19,10 +19,10 @@ import {
   };
   const deleteHistory = (id) => {
     const currhistory = doc(db, "HistoryNews", id);
+    console.log(currhistory);
     return deleteDoc(currhistory);
   };
   const getALLHistory = async(id) => {
-    // console.log(id);
     const q=query(collection(db,"HistoryNews"), where('id','==',id));
     const qresult=await getDocs(q);
     return qresult;

@@ -5,17 +5,18 @@ import { addHistory } from "../utils/historyCrud";
 const NewsCard = ({
   news: { author, title, description, content, urlToImage, url, publishedAt },
 }) => {
+  const id =localStorage.getItem('userId');
   const handleHistory=async()=>{
-    const id =localStorage.getItem('userId');
+    
     if(id===null){
       alert('login first')
       return
     }
     const history={id,author,title,description,content,urlToImage,url,publishedAt};
     try {
-      console.log(history);
+      // console.log(history);
       await addHistory(history);
-      console.log("success");
+      // console.log("success");
     } catch (error) {
       console.log(error);
     }
@@ -24,9 +25,9 @@ const NewsCard = ({
     <div className="h-128 w-80 m-6 border-2 border-black ">
       <img src={urlToImage} alt="news" />
       <p>{author}</p>
-      <p>{title?.slice(0, 20)}</p>
-      <p>{description?.slice(0, 20)}</p>
-      <p>{content?.slice(0, 20)}</p>
+      <p>{title?.slice(0,35)}</p>
+      <p>{description?.slice(0,35)}</p>
+      <p>{content?.slice(0, 35)}</p>
       <p>{publishedAt}</p>
       <Link
         to={url}

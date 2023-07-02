@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { getALLHistory } from '../utils/historyCrud';
-import NewsCard from '../components/NewsCard';
+import HistoryCard from '../components/HistoryCard';
 
 const HistoryPage = () => {
     const uid=localStorage.getItem('userId');
@@ -41,7 +41,7 @@ const HistoryPage = () => {
                     <div className="flex flex-wrap justify-center">
                      {
                         result.map((d)=>(
-                            <NewsCard news={d}/>
+                            <HistoryCard news={d}/>
                         ))
                      }
                     </div>
