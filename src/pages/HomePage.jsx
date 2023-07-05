@@ -5,12 +5,16 @@ import NewsCard from "../components/NewsCard";
 import { categories } from "../utils/constant";
 
 const HomePage = () => {
+  const [loading, setLoading] = useState(false);
   const [data, setdata] = useState([]);
   const [article, setarticle] = useState("general");
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
+      setdata([]);
       const currdata = await fetchData(article);
       setdata(currdata);
+      setLoading(false);
     };
     getData();
   }, [article]);
@@ -20,7 +24,7 @@ const HomePage = () => {
       <div className=" bg-gray-700 w-full h-full">
         {data?.length === 0 ? (
           <div className="h-semi-screen flex justify-center items-center text-white text-4xl ">
-            <h1>No data</h1>
+            <h1>{loading === true ? "loading" : "No Data"}</h1>
           </div>
         ) : (
           <div className=" bg-gray-700 w-full h-full">

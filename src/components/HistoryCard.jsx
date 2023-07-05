@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { deleteHistory } from "../utils/historyCrud";
+import noimage from "../assets/noimage.webp"
 // import { useNavigate } from "react-router-dom";
 
 const HistoryCard = ({
@@ -19,7 +20,7 @@ const HistoryCard = ({
     }
   return (
     <div className="h-128 w-80 m-6 border-2 border-black ">
-      <img src={urlToImage} alt="news" />
+      <img src={urlToImage===null?noimage:urlToImage} className="w-full h-2/5" alt="news" />
       <p>{author}</p>
       <p>{title?.slice(0, 35)}</p>
       <p>{description?.slice(0, 35)}</p>

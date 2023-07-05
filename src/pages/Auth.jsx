@@ -13,7 +13,7 @@ const Auth = () => {
   });
   const [param, setparam] = useState("login");
   const authe = getAuth(app);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const register = () => {
     const { email, password } = credentials;
     createUserWithEmailAndPassword(authe, email, password)
@@ -33,9 +33,10 @@ const Auth = () => {
     const { email, password } = credentials;
     signInWithEmailAndPassword(authe, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         localStorage.setItem("userId", user.uid);
+        localStorage.setItem('user',user.email);
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -64,14 +65,13 @@ const Auth = () => {
     });
   };
   useEffect(() => {
-     const userid=localStorage.getItem('userId');
-     if(userid){
+    const userid = localStorage.getItem("userId");
+    if (userid) {
       console.log("user exist");
-      navigate('/');
-     }
-     else{
-      console.log('user doesnot exist');
-     }
+      navigate("/");
+    } else {
+      console.log("user doesnot exist");
+    }
   }, [navigate]);
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
@@ -88,7 +88,7 @@ const Auth = () => {
             onChange={handleChange}
             className="border-solid border-2 border-white block w-full bg-transparent px-3 rounded-2xl h-8"
           />
-       
+
           <label htmlFor="password" className="block text-center mt-3">
             password
           </label>
