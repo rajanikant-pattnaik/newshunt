@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { RiAccountCircleFill } from "react-icons/ri";
 const Navbar = () => {
   const [term, setTerm] = useState("");
-  const [name, setName] = useState("no user");
+  // const [name, setName] = useState("no user");
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,14 +19,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     navigate("/");
   };
-  useEffect(() => {
-    const setAccount = () => {
-      if (localStorage.getItem("user")) {
-        setName(localStorage.getItem("user"));
-      }
-    };
-    setAccount();
-  }, []);
+
   return (
     <div>
       <nav className=" mx-auto flex justify-between px-4 py-6 bg-gray-900 text-slate-200">
@@ -78,10 +71,10 @@ const Navbar = () => {
             Likes
           </li>
           <li
-            className="px-3 text-2xl font-semibold hover:underline hover:text-blue-300"
+            className="px-3 text-3xl font-semibold hover:underline hover:text-blue-300  mt-1 "
             onClick={logOut}
           >
-            {name}
+            {<RiAccountCircleFill />}
           </li>
         </ul>
       </nav>

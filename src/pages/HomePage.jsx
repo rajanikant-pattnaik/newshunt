@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchData } from "../utils/fetchData";
 import Navbar from "../components/Navbar";
 import NewsCard from "../components/NewsCard";
+import {ThreeCircles} from "react-loader-spinner";
 import { categories } from "../utils/constant";
 
 const HomePage = () => {
@@ -24,7 +25,7 @@ const HomePage = () => {
       <div className=" bg-gray-700 w-full h-full">
         {data?.length === 0 ? (
           <div className="h-semi-screen flex justify-center items-center text-white text-4xl ">
-            <h1>{loading === true ? "loading" : "No Data"}</h1>
+            <h1>{loading === true ? <ThreeCircles/>: "No Data"}</h1>
           </div>
         ) : (
           <div className=" bg-gray-700 w-full h-full">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import { fetchData } from "../utils/fetchData";
+import { ThreeCircles } from "react-loader-spinner";
 import NewsCard from "../components/NewsCard";
 
 const SearchPage = () => {
@@ -24,7 +25,7 @@ const SearchPage = () => {
       <div>
         {data?.length === 0 ? (
           <div className="h-semi-screen flex justify-center items-center text-white text-4xl bg-gray-700">
-            <h1>{loading === true ? "loading" : "No Data"}</h1>
+            <h1>{loading === true ? <ThreeCircles color="red"/> : "No Data"}</h1>
           </div>
         ) : (
           <div className="bg-gray-700">
