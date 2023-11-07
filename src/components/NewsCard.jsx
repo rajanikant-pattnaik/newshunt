@@ -24,22 +24,30 @@ const NewsCard = ({
   }
   // console.log(urlToImage);
   return (
-    <div className="h-128 w-80 m-6 border-2 border-black ">
-      <img src={urlToImage===null?noimage:urlToImage} className="w-full h-2/5" alt="news" />
-      <p>{author}</p>
-      <p>{title?.slice(0,35)}</p>
-      <p>{description?.slice(0,35)}</p>
-      <p>{content?.slice(0, 35)}</p>
-      <p>{publishedAt}</p>
-      <Link
-        to={url}
-        target="_blank"
-        rel="noopener"
-        onClick={handleHistory}
-      >
-        read more
-      </Link>
+    <div className="bg-white rounded-lg overflow-hidden shadow-lg sm:w-80 m-6">
+    <img
+      src={urlToImage === null ? noimage : urlToImage}
+      className="w-full h-48 object-cover object-center"
+      alt="news"
+    />
+    <div className="p-4">
+      <p className="text-gray-500 text-sm">{publishedAt}</p>
+      <p className="text-lg font-semibold text-black mb-2">{title?.slice(0, 35)}</p>
+      <p className="text-gray-600 text-sm mb-4">{description?.slice(0, 35)}</p>
+      <p className="text-gray-800 text-base mb-4">{content?.slice(0, 35)}</p>
+      <p className="text-blue-500 text-sm font-semibold cursor-pointer">
+        <Link
+          href={url}
+          target="_blank"
+          rel="noopener"
+          onClick={handleHistory}
+        >
+          Read more
+        </Link>
+      </p>
     </div>
+  </div>
+  
   );
 };
 

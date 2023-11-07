@@ -35,7 +35,7 @@ const Auth = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         localStorage.setItem("userId", user.uid);
-        localStorage.setItem('user',user.email);
+        localStorage.setItem("user", user.email);
         navigate("/");
       })
       .catch((error) => {
@@ -75,40 +75,43 @@ const Auth = () => {
   }, [navigate]);
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
-      <form className="h-96 w-96 bg-slate-500 p-8 space-y-6">
+      <form className="w-full sm:w-96 bg-slate-500 p-8 space-y-6 rounded-lg shadow-lg">
         <h1 className="text-4xl text-center">{param}</h1>
         <div>
-          <label htmlFor="email" className="block text-center">
-            email
+          <label htmlFor="email" className="block text-center text-white">
+            Email
           </label>
           <input
             type="text"
             name="email"
             value={credentials.email}
             onChange={handleChange}
-            className="border-solid border-2 border-white block w-full bg-transparent px-3 rounded-2xl h-8"
+            className="border-2 border-white block w-full bg-transparent px-3 py-2 rounded-2xl"
           />
 
-          <label htmlFor="password" className="block text-center mt-3">
-            password
+          <label
+            htmlFor="password"
+            className="block text-center text-white mt-3"
+          >
+            Password
           </label>
           <input
             type="password"
             name="password"
             value={credentials.password}
             onChange={handleChange}
-            className="border-solid border-2 border-white block w-full bg-transparent px-3 rounded-2xl h-8"
+            className="border-2 border-white block w-full bg-transparent px-3 py-2 rounded-2xl"
           />
         </div>
 
         <button
           onClick={handleSubmit}
-          className="border-solid border-2 border-white w-full hover:bg-white hover:text-black mt-5 h-8 rounded-2xl"
+          className="bg-white text-black border-2 border-white w-full hover:bg-slate-500 hover:text-white py-2 rounded-2xl"
         >
           {param}
         </button>
         <button
-          className="text-white block text-center w-full hover:bg-blue-900 h-8 rounded-2xl"
+          className="text-white block text-center w-full hover:bg-blue-900 py-2 rounded-2xl"
           onClick={(e) => {
             e.preventDefault();
             if (param === "login") setparam("register");

@@ -19,20 +19,37 @@ const HistoryCard = ({
     
     }
   return (
-    <div className="h-128 w-80 m-6 border-2 border-black ">
-      <img src={urlToImage===null?noimage:urlToImage} className="w-full h-2/5" alt="news" />
-      <p>{author}</p>
-      <p>{title?.slice(0, 35)}</p>
-      <p>{description?.slice(0, 35)}</p>
-      <p>{content?.slice(0, 35)}</p>
-      <p>{publishedAt}</p>
-      <Link to={url} target="_blank" rel="noopener">
-        read more
-      </Link>
-      <button className="block border-4 h-8 w-16 rounded-3xl bg-black text-white hover:bg-slate-600 hover:border-blue-950 " onClick={deleteHistoryCard}>
-        delete
-      </button>
+    <div className="max-w-md mx-auto border border-black bg-white rounded-lg shadow-lg mb-6">
+    <img
+      src={urlToImage === null ? noimage : urlToImage}
+      className="w-full h-40 object-cover rounded-t-lg"
+      alt="news"
+    />
+    <div className="p-4">
+      <p className="text-gray-500 text-sm">{publishedAt}</p>
+      <p className="text-lg font-semibold text-black mb-2">{title?.slice(0, 35)}</p>
+      <p className="text-gray-600 text-sm mb-4">{description?.slice(0, 35)}</p>
+      <p className="text-gray-800 text-base mb-4">{content?.slice(0, 35)}</p>
+      <div className="flex justify-between items-center">
+        <p className="text-blue-500 text-sm font-semibold cursor-pointer">
+          <Link
+            href={url}
+            target="_blank"
+            rel="noopener"
+          >
+            Read more
+          </Link>
+        </p>
+        <button
+          className="block h-8 w-16 rounded-3xl bg-red-500 text-white hover:bg-red-600"
+          onClick={deleteHistoryCard}
+        >
+          Delete
+        </button>
+      </div>
     </div>
+  </div>
+  
   );
 };
 
